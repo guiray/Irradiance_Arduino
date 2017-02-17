@@ -20,6 +20,7 @@ float A2SensorReading;
 
 // Digital 1 Radiation Monitor
 int D1pin = 2;
+int countSum = 0;
 
 void setup() {
   Serial.begin(9600);
@@ -28,14 +29,9 @@ void setup() {
 
 void loop() {
   // Digital 1
-  int countSum = 0;
-
-  if (digitalRead(D1pin)==HIGH) {
-        countSum++;
-    }
-  if (countSum != 0 ) {
-       Serial.println(countSum);
-    }
+  if (digitalRead(D1pin)!=0) {
+    Serial.println("1");
+  }
   
   // Analog 1
   A1oldSensorReading = A1SensorReading;
@@ -50,7 +46,7 @@ void loop() {
 
   // Analog 2
   A2oldSensorReading = A2SensorReading;
-  A2Value = analogRead(A3);
+  A2Value = analogRead(A2);
   A2Voltage = A2Value / 1023 * 5.0; // convert to raw voltage
   A2SensorReading = A2Intercept + A2Voltage * A2Slope; // convert voltage to sensor reading
   // print on serial port when Value Changes
@@ -58,7 +54,5 @@ void loop() {
     //Serial.print("Analog 2: ");
     //Serial.println(A2Value);
   }
-
-  
-  
+    
 }
