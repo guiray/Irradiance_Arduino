@@ -4,6 +4,7 @@ int A1SensorReading;
 int A2SensorReading;
 // Digital 1 Radiation Monitor
 int D1pin = 2;
+int D1Value = 0;
 
 unsigned long time;
 
@@ -16,23 +17,28 @@ void setup() {
 void loop() {
   time = millis();
 
+  // Digital 1
+  D1Value = digitalRead(D1pin);
+  if (D1Value == 1) {
+    
+    Serial.print("D1_ ");
+    Serial.println(D1Value);
+    delay(1);
+    Serial.print("D1_ ");
+    Serial.println(0);
+    delay(1);
+  }
+
   if (time % 100 == 0) {
     A1SensorReading = analogRead(A0);
-    Serial.print("A1_");
+    Serial.print("A1_ ");
     Serial.println(A1SensorReading);
 
     A2SensorReading = analogRead(A2);
-    Serial.print("A2_");
+    Serial.print("A2_ ");
     Serial.println(A2SensorReading);
 
     delay(10);
-  }
-
-  // Digital 1
-  if (digitalRead(D1pin) == 1) {
-    Serial.print("D1_");
-    Serial.println("1");
-    delay(1);
   }
 
 }
