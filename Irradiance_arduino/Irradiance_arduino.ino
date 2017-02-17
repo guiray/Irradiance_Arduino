@@ -20,9 +20,6 @@ float A2SensorReading;
 
 // Digital 1 Radiation Monitor
 int D1pin = 2;
-int D1Value = 0;
-int D1oldValue = 0;
-unsigned long TimeMsStart = 0;
 
 void setup() {
   Serial.begin(9600);
@@ -30,26 +27,15 @@ void setup() {
 }
 
 void loop() {
-
+  // Digital 1
   int countSum = 0;
 
-  TimeMsStart = millis();
-
-  while ((millis() - TimeMsStart) <= 100){
-    if (digitalRead(D1pin)==HIGH) {
+  if (digitalRead(D1pin)==HIGH) {
         countSum++;
     }
-  }
-  Serial.println(countSum);
-  
-  // Digital 1
-  //D1oldValue = D1Value;
-  //D1Value = digitalRead(D1pin);
-  //if (D1Value != D1oldValue) {
-    //Serial.println(D1Value);
-    //Serial.println(countSum);
-    
-  //}
+  if (countSum != 0 ) {
+       Serial.println(countSum);
+    }
   
   // Analog 1
   A1oldSensorReading = A1SensorReading;
