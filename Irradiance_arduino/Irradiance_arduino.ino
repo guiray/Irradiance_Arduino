@@ -21,7 +21,7 @@ void loop() {
    
   // Analog 1
   //A1oldSensorReading = A1SensorReading;
-  //A1SensorReading = analogRead(A0);
+  A1SensorReading = analogRead(A0);
   //if (A1SensorReading != A1oldSensorReading) {
     //Serial.print("0");
     //Serial.println(A1SensorReading);
