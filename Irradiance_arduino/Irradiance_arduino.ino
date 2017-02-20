@@ -23,13 +23,13 @@ void loop() {
     
     Serial.print("D1_ ");
     Serial.println(D1Value);
-    delay(1);
+    delay(100);
     Serial.print("D1_ ");
     Serial.println(0);
-    delay(1);
+    delay(100);
   }
 
-  if (time % 100 == 0) {
+  if (time % 10 == 0) {
     A1SensorReading = analogRead(A0);
     Serial.print("A1_ ");
     Serial.println(A1SensorReading);
